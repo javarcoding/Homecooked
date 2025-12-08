@@ -28,7 +28,9 @@ public class SecurityConfig {
                             "/swagger-ui.html",
                             "/v3/api-docs/**",
                             "/v3/api-docs.yaml",
+                            "/menus/featured" ,
                             "/actuator/**" // optional (if using actuator)
+                            
                     ).permitAll()
                     .requestMatchers("/admin/**").hasRole("ADMIN")
                     .requestMatchers("/chef/**").hasRole("CHEF")

@@ -13,7 +13,7 @@ export default function DeliveryDashboard() {
 
   return (
     <div className="p-10">
-      <h1 className="text-3xl mb-6">Customer Dashboard</h1>
+      <h1 className="text-3xl mb-6">Delivery Dashboard</h1>
 
       <button
         onClick={handleLogout}

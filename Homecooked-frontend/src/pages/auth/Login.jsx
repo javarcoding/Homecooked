@@ -17,20 +17,26 @@ function Login() {
     });
 
     useEffect(() => {
-        if (token && user) {
-            const role = user.role;
-
-            if (role === "ADMIN") {
-                navigate("/admin/dashboard");
-            } else if (role === "CHEF") {
-                navigate("/chef/dashboard");
-            } else if (role === "DELIVERY") {
-                navigate("/delivery/dashboard");
-            } else if (role === "CUSTOMER") {
-                navigate("/customer/dashboard");
+        if (token && user && user.role) {
+            switch (user.role) {
+                case "ADMIN":
+                    navigate("/admin/dashboard");
+                    break;
+                case "CHEF":
+                    navigate("/chef/dashboard");
+                    break;
+                case "DELIVERY":
+                    navigate("/delivery/dashboard");
+                    break;
+                case "CUSTOMER":
+                    navigate("/customer/dashboard");
+                    break;
+                default:
+                    navigate("/login"); // fallback
             }
         }
     }, [token, user, navigate]);
+
 
 
 

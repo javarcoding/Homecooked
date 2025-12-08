@@ -13,5 +13,7 @@ export const registerUser = async (userData) => {
 // ====================
 export const loginUser = async (loginData) => {
   const response = await api.post("/auth/login", loginData);
+  console.log("Login response:", response.data); // check role
   return response.data;
 };
+
