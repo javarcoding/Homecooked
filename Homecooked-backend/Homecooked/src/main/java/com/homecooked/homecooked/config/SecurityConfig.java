@@ -29,6 +29,9 @@ public class SecurityConfig {
                             "/v3/api-docs/**",
                             "/v3/api-docs.yaml",
                             "/menus/featured" ,
+                            "/images/**",  
+                            "/css/**",
+                            "/js/**",
                             "/actuator/**" // optional (if using actuator)
                             
                     ).permitAll()
@@ -48,4 +51,14 @@ public class SecurityConfig {
             AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
+    
+    @Bean
+    public org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring().requestMatchers(
+                "/images/**",
+                "/css/**",
+                "/js/**"
+        );
+    }
+
 }

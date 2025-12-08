@@ -8,6 +8,7 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/public/Home";
 import About from "../pages/public/About";
 import Contact from "../pages/public/Contact";
+import TestMeals from "../pages/TestMeals";
 
 function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/test-meals" element={<TestMeals />} />
 
       {/* Private Routes */}
       <Route element={<MainLayout />}>

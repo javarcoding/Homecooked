@@ -1,24 +1,43 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getFeaturedMeals } from "../../redux/slices/menuSlice";
+import MealCard from "../../components/MealCard/MealCard";
 
 function Home() {
+  const dispatch = useDispatch();
+  const { meals, isLoading, isError } = useSelector((state) => state.menu);
+
+  useEffect(() => {
+    dispatch(getFeaturedMeals());
+  }, [dispatch]);
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="text-center py-20 bg-green-100">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Homecooked</h1>
-        <p className="text-lg mb-6">Smart Tiffin Service Platform</p>
-        <Link
-          to="/register"
-          className="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700"
-        >
-          Get Started
-        </Link>
+      {/* Hero Section */}
+      <section className="text-center py-16 bg-green-100">
+        <h1 className="text-4xl font-bold">Homecooked</h1>
+        <p className="mt-2 text-lg">Smart Tiffin Service Platform</p>
       </section>
 
-      <section className="py-20 px-4 max-w-5xl mx-auto">
-        <h2 className="text-3xl font-semibold mb-4 text-center">Our Services</h2>
-        <p className="text-center text-gray-700">
-          Enjoy freshly homecooked meals delivered to your doorstep. Choose your favorite chef and meals.
-        </p>
+      {/* Featured Meals Section */}
+      <section className="max-w-6xl mx-auto py-12 px-4">
+        <h2 className="text-3xl font-bold mb-6 text-center">
+          Featured Meals
+        </h2>
+
+        {isLoading && <p className="text-center">Loading meals...</p>}
+
+        {isError && (
+          <p className="text-center text-red-500">
+            Failed to load meals. Try again later.
+          </p>
+        )}
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {meals.map((meal) => (
+            <MealCard key={meal.id} meal={meal} />
+          ))}
+        </div>
       </section>
     </div>
   );
