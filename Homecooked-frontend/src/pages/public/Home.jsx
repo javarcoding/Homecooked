@@ -16,7 +16,10 @@ function Home() {
       {/* Hero Section */}
       <section className="text-center py-16 bg-green-100">
         <h1 className="text-4xl font-bold">Homecooked</h1>
-        <p className="mt-2 text-lg">Smart Tiffin Service Platform</p>
+        <p className="mt-2 text-lg py-4">Smart Tiffin Service Platform</p>
+        
+        <a href="/chefs"className="ml-4 bg-blue-600 text-white px-4 py-2 rounded">Browse Chefs</a>
+
       </section>
 
       {/* Featured Meals Section */}
