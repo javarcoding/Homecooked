@@ -1,5 +1,5 @@
 import AppRoutes from "./routes/AppRoutes";
-
+import { useAutoLogout } from "./hooks/useAutoLogout";
 
 // import { useEffect } from "react";
 // import { useDispatch } from "react-redux";
@@ -18,6 +18,7 @@ function App() {
   //     dispatch(fetchUser(token));
   //   }
   // }, [dispatch]);
+  useAutoLogout();
 
   return <AppRoutes />;
 }
